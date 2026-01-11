@@ -1,8 +1,4 @@
-# flutter_complete_project_omar_ahmed
-
-A new Flutter project.
-
-## Getting Started
+# :book: Flutter Advanced Project
 
 This project is a starting point for a Flutter application.
 
