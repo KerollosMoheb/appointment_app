@@ -19,7 +19,7 @@ class GetStartedButton extends StatelessWidget {
         minimumSize: Size(double.infinity, 52),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
-      child: Text('Get Started', style: TextStyles.font16WhiteSemiBold),
+      child: Text('Get Started', style: TextStyles.font16WhiteMedium),
     );
   }
 }
