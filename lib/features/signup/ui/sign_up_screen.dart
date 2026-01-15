@@ -3,15 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_complete_project_omar_ahmed/core/helpers/spacing.dart';
 import 'package:flutter_complete_project_omar_ahmed/core/themeing/styles.dart';
 import 'package:flutter_complete_project_omar_ahmed/core/widgets/app_text_button.dart';
-import 'package:flutter_complete_project_omar_ahmed/features/login/logic/login_cubit/login_cubit.dart';
-import 'package:flutter_complete_project_omar_ahmed/features/login/ui/widgets/dont_have_an_account_text.dart';
-import 'package:flutter_complete_project_omar_ahmed/features/login/ui/widgets/email_and_password.dart';
-import 'package:flutter_complete_project_omar_ahmed/features/login/ui/widgets/login_build_bloc_listner.dart';
 import 'package:flutter_complete_project_omar_ahmed/features/login/ui/widgets/terms_and_conditions_text.dart';
+import 'package:flutter_complete_project_omar_ahmed/features/signup/logic/sign_up_cubit/sign_up_cubit.dart';
+import 'package:flutter_complete_project_omar_ahmed/features/signup/ui/widgets/already_have_an_account.dart';
+import 'package:flutter_complete_project_omar_ahmed/features/signup/ui/widgets/sign_up_build_bloc_listner.dart';
+import 'package:flutter_complete_project_omar_ahmed/features/signup/ui/widgets/sign_up_form.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,36 +25,29 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Welcome Back", style: TextStyles.font24BlueBold),
+                  Text("Create Account", style: TextStyles.font24BlueBold),
                   verticalSpace(10),
                   Text(
-                    'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
+                    'Sign up now and start exploring all that our app has to offer. We\'re excited to welcome you to our community!',
                     style: TextStyles.font14GreyRegular,
                   ),
                   verticalSpace(36),
                   Column(
                     children: [
-                      const EmailAndPassword(),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Text(
-                          'Forgot Password?',
-                          style: TextStyles.font13BlueRegular,
-                        ),
-                      ),
+                      const SignUpForm(),
                       verticalSpace(40),
                       AppTextButton(
-                        buttonText: "Login",
+                        buttonText: "Create Account",
                         textStyle: TextStyles.font16WhiteSemiBold,
                         onPressed: () {
-                          validateThenDoLogin(context);
+                          validateThenDoSignUp(context);
                         },
                       ),
                       verticalSpace(16),
                       const TermsAndConditionsText(),
                       verticalSpace(60),
-                      const DontHaveAnAccountText(),
-                      const LoginBuildBlocListner(),
+                      const AlreadyHaveAnAccount(),
+                      const SignUpBuildBlocListner(),
                     ],
                   ),
                 ],
@@ -66,9 +59,9 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  void validateThenDoLogin(BuildContext context) {
-    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginStates();
+  void validateThenDoSignUp(BuildContext context) {
+    if (context.read<SignUpCubit>().formKey.currentState!.validate()) {
+      context.read<SignUpCubit>().emitSignUpStates();
     }
   }
 }

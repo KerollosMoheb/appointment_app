@@ -29,7 +29,7 @@ class LoginBuildBlocListner extends StatelessWidget {
             context.pop();
             context.pushNamed(Routes.homeScreen);
           },
-          failure: (error) {
+          error: (error) {
             setupErrorState(context, error);
           },
         );
